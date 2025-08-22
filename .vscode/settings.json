@@ -1,0 +1,46 @@
+{
+    // Python インタープリタのパスを仮想環境に設定
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+
+    // コードを保存した際に自動で実行するコマンドを設定
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll": "explicit"
+    },
+    "editor.formatOnSave": true,
+
+    // デフォルトのフォーマッターに Black を設定
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "88"
+    ],
+
+    // デフォルトのリンターに Ruff を設定
+    "python.analysis.diagnosticSeverityOverrides": {},
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": false,
+    "python.linting.banditEnabled": false,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pyrightEnabled": true,
+    "python.linting.ruffEnabled": true,
+    "python.linting.ruffArgs": [
+        "--ignore",
+        "E501"
+    ],
+    
+    // Pyright の設定
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoSearchPaths": true,
+
+    // isort の設定 (ruff に含まれているため不要な場合が多い)
+    "isort.check": true,
+    "isort.enabled": true,
+    "isort.args": [
+        "--profile",
+        "black"
+    ]
+}
