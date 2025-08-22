@@ -1,46 +1,42 @@
 {
-    // Python インタープリタのパスを仮想環境に設定
+    // Pythonインタプリタのパスを指定します。
+    // 仮想環境を使用している場合、その環境のpython.exeのパスを指定します。
     "python.defaultInterpreterPath": ".venv/bin/python",
-    "python.terminal.activateEnvironment": true,
-
-    // コードを保存した際に自動で実行するコマンドを設定
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": "explicit",
-        "source.fixAll": "explicit"
-    },
-    "editor.formatOnSave": true,
-
-    // デフォルトのフォーマッターに Black を設定
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "88"
+    // 必要に応じて、インタプリタの探索パスを追加できます。
+    "python.analysis.extraPaths": [
+        "./src",
     ],
 
-    // デフォルトのリンターに Ruff を設定
-    "python.analysis.diagnosticSeverityOverrides": {},
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": false,
-    "python.linting.mypyEnabled": false,
-    "python.linting.banditEnabled": false,
-    "python.linting.pycodestyleEnabled": false,
-    "python.linting.pyrightEnabled": true,
+    // Jupyterノートブックの設定
+    // ノートブックのセルごとの出力自動クリアを無効にします。
+    "jupyter.clearOutputOnDirty": false,
+
+    // Ruffによるフォーマットとリンティング
+    // フォーマッターとしてRuffを使用
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    // 保存時に自動でフォーマット
+    "editor.formatOnSave": true,
+    // PythonのデフォルトリンターとしてRuffを使用
+    "python.linting.lintOnSave": true,
     "python.linting.ruffEnabled": true,
     "python.linting.ruffArgs": [
-        "--ignore",
-        "E501"
+        "--fix"
     ],
-    
-    // Pyright の設定
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.autoSearchPaths": true,
 
-    // isort の設定 (ruff に含まれているため不要な場合が多い)
-    "isort.check": true,
-    "isort.enabled": true,
-    "isort.args": [
-        "--profile",
-        "black"
-    ]
+    // Pyrightによる静的型チェック
+    // デフォルトのPython言語サーバーとしてPyrightを使用
+    "python.languageServer": "Pylance",
+    "pyright.disableTaggedHints": true,
+    // Pyrightのタイプチェックレベルを厳密に設定
+    "python.analysis.typeCheckingMode": "strict",
+
+    // その他の推奨設定
+    // 複数行コメントの自動整形を無効化（Jupyterノートブックなどで便利）
+    "editor.formatOnType": false,
+    // 保存時の不要な空白の自動削除
+    "files.trimTrailingWhitespace": true,
+    // ファイル末尾に新しい行を自動追加
+    "files.insertFinalNewline": true,
+    // ファイル末尾の改行を削除
+    "files.trimFinalNewlines": true,
 }
